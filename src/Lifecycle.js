@@ -7,7 +7,7 @@ class Lifecycle extends React.Component {
             message : '',
             text : '',
         }
-        console.log("This is the constructor!")
+        console.log("This is the constructor!");
     }
     componentDidMount(){
         console.log('This is componentDidMount')
