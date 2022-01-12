@@ -10,47 +10,72 @@ const Inputs = () => {
     })
 
     const handleChangeName = (e) => {
-        setUserInput({
-            ...userInput, 
-            name : e.target.value,
-        })
-    }
+        setUserInput((prevState) => {
+            return(
+                {
+                    ...prevState, 
+                    name : e.target.value,
+                }
+            )
+        } )
+    };
 
     const handleChangeSurname = (e) => {
-        setUserInput({
-            ...userInput,
-            surname : e.target.value,
+        setUserInput((prevState) => {
+            return(
+                {
+                    ...prevState,
+                    surname : e.target.value,
+                }
+            )
         })
     }
 
     const handleChangeAge = (e) => {
-        setUserInput({
-            ...userInput,
-            age : e.target.value,
+        setUserInput((prevState) => {
+            return({
+                ...prevState,
+                age : e.target.value,
+            })
         })
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(userInput)
+        console.log(userInput);
+
+        setUserInput({
+            name : '',
+            surname : '',
+            age : ''
+        })
     }
 
     return(
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className = 'form-input'>
                     <label>Name :</label>
-                    <input type = 'text' onChange={handleChangeName} />
+                    <input 
+                    type = 'text' 
+                    onChange={handleChangeName} 
+                    value = {userInput.name}/>
                 </div>
                 <div className = 'form-input'>
                     <label >Surname : </label>
-                    <input type = 'text'onChange={handleChangeSurname} />
+                    <input 
+                    type = 'text'
+                    onChange={handleChangeSurname}
+                    value = {userInput.surname} />
                 </div>
                 <div className = 'form-input'>
                     <label >Age : </label>
-                    <input type = 'number'onChange={handleChangeAge} />
+                    <input 
+                    type = 'number'
+                    onChange={handleChangeAge} 
+                    value = {userInput.age} />
                 </div>
-                <button className = 'btn' onClick = {handleSubmit}>
+                <button >
                     Submit
                 </button>
 
